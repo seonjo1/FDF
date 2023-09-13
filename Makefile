@@ -6,24 +6,24 @@
 #    By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/07 17:07:04 by seonjo            #+#    #+#              #
-#    Updated: 2023/09/07 18:25:46 by seonjo           ###   ########.fr        #
+#    Updated: 2023/09/13 17:49:47 by seonjo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = FDF
 CC = cc
-FLAGS = -L ./minilibx_mms_20210621 -lmlx -framework OpenGL -framework Appkit -lz
+FLAGS = -L. -lmlx -framework OpenGL -framework AppKit -lz
 CFLAGS = -Wall -Wextra -Werror
-SRCS = main.c
+SRCS = main.c get_next_line.c get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) libft.a -o $(NAME)
+	$(CC) $(OBJS) $(FLAGS) -L. -lft -o $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -I . -c $<
+	$(CC) $(CFLAGS) -I. -c $<
 
 clean :
 	rm -f $(OBJS)
