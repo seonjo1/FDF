@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:02:41 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/22 17:33:25 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/22 19:24:19 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	set_xyz(t_map *map, t_xyz *xyz)
 		xyz[i].x = (map->map)[i].x;
 		xyz[i].y = (map->map)[i].y;
 		xyz[i].z = (map->map)[i].z;
+		xyz[i].color = (map->map)[i].color;
 		i++;
 	}
 }
@@ -51,9 +52,9 @@ void	draw_row(t_map *map, t_data *img, t_xyz *xyz, t_xyz offset)
 			p1.x = xyz[i + 1].x + offset.x + map->move.x;
 			p1.y = xyz[i + 1].y + offset.y + map->move.y;
 			if (p0.x <= p1.x)
-				bresenham(img, p0, p1);
+				bresenham(img, p0, p1, xyz[i].color);
 			else
-				bresenham(img, p1, p0);
+				bresenham(img, p1, p0, xyz[i].color);
 		}
 		i++;
 	}
@@ -79,9 +80,9 @@ void	draw_col(t_map *map, t_data *img, t_xyz *xyz, t_xyz offset)
 			p1.x = xyz[(int)(ij.y + wh.x)].x + offset.x + map->move.x;
 			p1.y = xyz[(int)(ij.y + wh.x)].y + offset.y + map->move.y;
 			if (p0.x <= p1.x)
-				bresenham(img, p0, p1);
+				bresenham(img, p0, p1, xyz[(int)ij.y].color);
 			else
-				bresenham(img, p1, p0);
+				bresenham(img, p1, p0, xyz[(int)ij.y].color);
 			ij.y = ij.y + wh.x;
 		}
 		ij.x++;

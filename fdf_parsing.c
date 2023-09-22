@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:55:22 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/19 22:32:43 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/22 18:27:53 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,42 +38,6 @@ void	get_width_height(t_map *map, int fd)
 		line = ft_gnl(fd);
 	}
 	map->size = (map->height) * (map->width);
-}
-
-
-void	malloc_map(t_map *map)
-{
-	map->map = malloc(sizeof(t_map) * map->size);
-	if (map->map == NULL)
-		exit(1);
-}
-
-void	fill_map(t_map	*map, int fd, int k)
-{
-	char	**arr;
-	char	*line;
-	int		i;
-	int		j;
-
-	malloc_map(map);
-	line = ft_gnl(fd);
-	i = 0;
-	while (line != NULL)
-	{
-		arr = ft_split(line, ' ');
-		j = 0;
-		while (arr[j] != NULL)
-		{
-			(map->map)[i].x = j;
-			(map->map)[i].y = k;
-			(map->map)[i++].z = ft_atoi(arr[j]);
-			free(arr[j++]);
-		}
-		k++;
-		free(arr);
-		free(line);
-		line = ft_gnl(fd);
-	}
 }
 
 double	get_gap(t_map *map)

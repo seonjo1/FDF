@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:52:29 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/22 18:03:51 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/22 19:22:20 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,15 @@ void	key_hook_rotate(int keycode, t_vars *vars)
 
 void	key_hook_move(int keycode, t_vars *vars)
 {
+	int	move;
+
+	move = vars->map.gap * 10;
 	if (keycode == 0)
-		vars->map.move.x -= 10;
+		vars->map.move.x -= move;
 	else if (keycode == 2)
-		vars->map.move.x += 10;
+		vars->map.move.x += move;
 	else if (keycode == 13)
-		vars->map.move.y -= 10;
+		vars->map.move.y -= move;
 	else
-		vars->map.move.y += 10;
+		vars->map.move.y += move;
 }
