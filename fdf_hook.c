@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:54:54 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/22 17:01:30 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/22 18:04:05 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,9 @@ int	close_hook(t_vars *vars)
 int	mouse_hook(int button, int x, int y, t_vars *vars)
 {
 	if (button == 1)
-	{
-		vars->map.angle.x = 50;
-		vars->map.angle.z = 45;
-		vars->map.angle.y = 0;
-		vars->map.move.x = 0;
-		vars->map.move.y = 0;
-		vars->map.move.y = 0;
-		vars->map.gap = vars->map.og_gap;
-	}
+		isometric(vars);
 	else if (button == 2)
-	{
-		vars->map.angle.x = 0;
-		vars->map.angle.y = 0;
-		vars->map.angle.z = 0;
-		vars->map.move.x = 0;
-		vars->map.move.y = 0;
-		vars->map.move.y = 0;
-		vars->map.gap = vars->map.og_gap;
-	}
+		parallel(vars);
 	else
 		return (x);
 	re_draw_img(vars, 1);

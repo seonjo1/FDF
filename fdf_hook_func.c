@@ -1,16 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_keyhook.c                                      :+:      :+:    :+:   */
+/*   fdf_hook_func.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:52:29 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/22 17:54:34 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/22 18:03:51 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	isometric(t_vars *vars)
+{
+	vars->map.angle.x = 50;
+	vars->map.angle.z = 45;
+	vars->map.angle.y = 0;
+	vars->map.move.x = 0;
+	vars->map.move.y = 0;
+	vars->map.move.y = 0;
+	vars->map.gap = vars->map.og_gap;
+	vars->map.axis.x = ((vars->map.width - 1) * vars->map.gap) / 2;
+	vars->map.axis.y = ((vars->map.height - 1) * vars->map.gap) / 2;
+}
+
+void	parallel(t_vars *vars)
+{
+	vars->map.angle.x = 0;
+	vars->map.angle.y = 0;
+	vars->map.angle.z = 0;
+	vars->map.move.x = 0;
+	vars->map.move.y = 0;
+	vars->map.move.y = 0;
+	vars->map.gap = vars->map.og_gap;
+	vars->map.axis.x = ((vars->map.width - 1) * vars->map.gap) / 2;
+	vars->map.axis.y = ((vars->map.height - 1) * vars->map.gap) / 2;
+}
 
 void	key_hook_scale(int keycode, t_vars *vars)
 {
@@ -21,8 +47,8 @@ void	key_hook_scale(int keycode, t_vars *vars)
 		vars->map.gap -= scale;
 	else
 		vars->map.gap += scale;
-	//vars->map.axis.x = ((vars->map.width - 1) * vars->map.gap) / 2;
-	//vars->map.axis.y = ((vars->map.height - 1) * vars->map.gap) / 2;
+	vars->map.axis.x = ((vars->map.width - 1) * vars->map.gap) / 2;
+	vars->map.axis.y = ((vars->map.height - 1) * vars->map.gap) / 2;
 }
 
 void	key_hook_rotate(int keycode, t_vars *vars)

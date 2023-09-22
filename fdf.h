@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:06:32 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/22 17:01:53 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/22 18:03:58 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,7 @@ int		mouse_hook(int button, int x, int y, t_vars *vars);
 void	re_draw_img(t_vars *vars, int flag);
 int		close_hook(t_vars *vars);
 void	set_angle(t_map *map, double x, double y, double z);
+void	isometric(t_vars *vars);
+void	parallel(t_vars *vars);
 
 #endif
