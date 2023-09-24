@@ -6,15 +6,14 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:55:22 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/22 18:27:53 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:03:09 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	get_width_height(t_map *map, int fd)
+void	get_width_height(t_map *map, int fd, int i)
 {
-	int		i;
 	char	*line;
 	char	**width_split;
 
@@ -27,7 +26,8 @@ void	get_width_height(t_map *map, int fd)
 	i = 0;
 	while (width_split[i] != NULL)
 	{
-		(map->width)++;
+		if (width_split[i][0] != '\n')
+			(map->width)++;
 		free(width_split[i++]);
 	}
 	free(width_split);
@@ -59,7 +59,7 @@ void	get_map(t_map *map, char *file)
 	int		fd;
 
 	fd = ft_open(file);
-	get_width_height(map, fd);
+	get_width_height(map, fd, 0);
 	close(fd);
 	fd = ft_open(file);
 	map->og_gap = get_gap(map);

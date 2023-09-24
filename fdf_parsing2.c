@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:27:22 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/22 18:46:43 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/24 15:58:26 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	enter_value(t_xyz *xyz, char *input, int j, int k)
 	else
 	{
 		tmp = 0;
-		while (input[i] != '\0')
+		while (input[i] != '\0' && input[i] != '\n')
 		{
 			dec = change_to_dec(input[i++]);
 			tmp = tmp * 16 + dec;
@@ -75,7 +75,8 @@ void	fill_map(t_map	*map, int fd, int k)
 		j = 0;
 		while (arr[j] != NULL)
 		{
-			enter_value(&((map->map)[i++]), arr[j], j, k);
+			if (arr[j][0] != '\n')
+				enter_value(&((map->map)[i++]), arr[j], j, k);
 			free(arr[j++]);
 		}
 		k++;

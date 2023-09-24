@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:05:01 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/22 16:59:15 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:11:31 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 		exit(1);
 	get_map(&(vars.map), argv[1]);
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "window");
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "fdf");
 	vars.img.img = mlx_new_image(vars.mlx, 1920, 1080);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &(vars.img.bpp), \
 					&(vars.img.line_len), &(vars.img.endian));

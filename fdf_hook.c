@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:54:54 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/22 18:04:05 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/24 16:15:19 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	key_hook(int keycode, t_vars *vars)
 		key_hook_rotate(keycode, vars);
 	else if (keycode == 12 || keycode == 14)
 		key_hook_scale(keycode, vars);
+	//else if (keycode == )
 	re_draw_img(vars, 0);
 	return (0);
 }
