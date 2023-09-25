@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_main.c                                         :+:      :+:    :+:   */
+/*   fdf_main_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:05:01 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/25 16:50:20 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/25 16:30:08 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-int	close_hook(t_vars *vars)
-{
-	mlx_destroy_image(vars->mlx, vars->img.img);
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
-	return (0);
-}
-
-int	key_hook(int keycode, t_vars *vars)
-{
-	if (keycode == 53)
-	{
-		mlx_destroy_image(vars->mlx, vars->img.img);
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
-	}
-	return (0);
-}
+#include "fdf_bonus.h"
 
 int	is_fdf(char *file)
 {
@@ -72,6 +53,7 @@ int	main(int argc, char **argv)
 	draw_img(&vars, 0);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
 	mlx_hook(vars.win, 2, 0, key_hook, (void *)(&vars));
+	mlx_hook(vars.win, 4, 0, mouse_hook, (void *)(&vars));
 	mlx_hook(vars.win, 17, 0, close_hook, (void *)(&vars));
 	mlx_loop(vars.mlx);
 }

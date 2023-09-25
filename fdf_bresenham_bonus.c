@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_bresenham.c                                    :+:      :+:    :+:   */
+/*   fdf_bresenham_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 14:45:39 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/25 16:03:04 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/25 16:29:49 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	bresenham_high_slope(t_data *img, t_xyz p0, t_xyz p1, int color)
 {
