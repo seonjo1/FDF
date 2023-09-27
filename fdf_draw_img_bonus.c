@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:02:41 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/25 16:29:56 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/09/27 22:40:36 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,44 @@ void	draw_row(t_vars *vars, t_xyz *img_frame, double x_off, double y_off)
 	int		w;
 	int		i;
 
-	i = 0;
 	w = vars->map.width;
-	while (i < vars->map.size)
+	if (img_frame[0].z < img_frame[vars->map.width - 1].z)
 	{
-		if ((i + 1) % w != 0)
+		i = 0;
+		while (i < vars->map.size)
 		{
-			p0.x = img_frame[i].x + x_off + vars->map.move.x;
-			p0.y = img_frame[i].y + y_off + vars->map.move.y;
-			p1.x = img_frame[i + 1].x + x_off + vars->map.move.x;
-			p1.y = img_frame[i + 1].y + y_off + vars->map.move.y;
-			if (p0.x <= p1.x)
-				bresenham(&(vars->img), p0, p1, img_frame[i].color);
-			else
-				bresenham(&(vars->img), p1, p0, img_frame[i].color);
+			if ((i + 1) % w != 0)
+			{
+				p0.x = img_frame[i].x + x_off + vars->map.move.x;
+				p0.y = img_frame[i].y + y_off + vars->map.move.y;
+				p1.x = img_frame[i + 1].x + x_off + vars->map.move.x;
+				p1.y = img_frame[i + 1].y + y_off + vars->map.move.y;
+				if (p0.x <= p1.x)
+					bresenham(&(vars->img), p0, p1, img_frame[i].color);
+				else
+					bresenham(&(vars->img), p1, p0, img_frame[i].color);
+			}
+			i++;
 		}
-		i++;
+	}
+	else
+	{
+		i = vars->map.width - 1;
+		while (i >= 0)
+		{
+			if ((i + 1) % w != 0)
+			{
+				p0.x = img_frame[i].x + x_off + vars->map.move.x;
+				p0.y = img_frame[i].y + y_off + vars->map.move.y;
+				p1.x = img_frame[i + 1].x + x_off + vars->map.move.x;
+				p1.y = img_frame[i + 1].y + y_off + vars->map.move.y;
+				if (p0.x <= p1.x)
+					bresenham(&(vars->img), p0, p1, img_frame[i].color);
+				else
+					bresenham(&(vars->img), p1, p0, img_frame[i].color);
+			}
+			i--;
+		}
 	}
 }
 
@@ -67,24 +89,49 @@ void	draw_col(t_vars *vars, t_xyz *img_frame, double x_off, double y_off)
 	t_xyz	xy;
 	int		w;
 
-	xy.x = 0;
-	w = vars->map.width;
-	while (xy.x < w)
+	if (img_frame[0].z < img_frame[vars->map.width - 1].z)
 	{
-		xy.y = xy.x;
-		while (xy.y / w < vars->map.height - 1)
+		xy.x = 0;
+		w = vars->map.width;
+		while (xy.x < w)
 		{
-			p0.x = img_frame[(int)xy.y].x + x_off + vars->map.move.x;
-			p0.y = img_frame[(int)xy.y].y + y_off + vars->map.move.y;
-			p1.x = img_frame[(int)(xy.y + w)].x + x_off + vars->map.move.x;
-			p1.y = img_frame[(int)(xy.y + w)].y + y_off + vars->map.move.y;
-			if (p0.x <= p1.x)
-				bresenham(&(vars->img), p0, p1, img_frame[(int)xy.y].color);
-			else
-				bresenham(&(vars->img), p1, p0, img_frame[(int)xy.y].color);
-			xy.y = xy.y + w;
+			xy.y = xy.x;
+			while (xy.y / w < vars->map.height - 1)
+			{
+				p0.x = img_frame[(int)xy.y].x + x_off + vars->map.move.x;
+				p0.y = img_frame[(int)xy.y].y + y_off + vars->map.move.y;
+				p1.x = img_frame[(int)(xy.y + w)].x + x_off + vars->map.move.x;
+				p1.y = img_frame[(int)(xy.y + w)].y + y_off + vars->map.move.y;
+				if (p0.x <= p1.x)
+					bresenham(&(vars->img), p0, p1, img_frame[(int)xy.y].color);
+				else
+					bresenham(&(vars->img), p1, p0, img_frame[(int)xy.y].color);
+				xy.y = xy.y + w;
+			}
+			xy.x++;
 		}
-		xy.x++;
+	}
+	else 
+	{
+		xy.x = vars->map.width - 1;
+		w = vars->map.width;
+		while (xy.x >= 0)
+		{
+			xy.y = xy.x;
+			while (xy.y / w < vars->map.height - 1)
+			{
+				p0.x = img_frame[(int)xy.y].x + x_off + vars->map.move.x;
+				p0.y = img_frame[(int)xy.y].y + y_off + vars->map.move.y;
+				p1.x = img_frame[(int)(xy.y + w)].x + x_off + vars->map.move.x;
+				p1.y = img_frame[(int)(xy.y + w)].y + y_off + vars->map.move.y;
+				if (p0.x <= p1.x)
+					bresenham(&(vars->img), p0, p1, img_frame[(int)xy.y].color);
+				else
+					bresenham(&(vars->img), p1, p0, img_frame[(int)xy.y].color);
+				xy.y = xy.y + w;
+			}
+			xy.x--;
+		}
 	}
 }
 
