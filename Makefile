@@ -6,7 +6,7 @@
 #    By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/07 17:07:04 by seonjo            #+#    #+#              #
-#    Updated: 2023/09/25 17:34:40 by seonjo           ###   ########.fr        #
+#    Updated: 2023/09/27 22:15:45 by seonjo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,3 +50,17 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re
+
+party :
+	@printf "\033c"
+	@echo "\n\033[35m♪┏(・o･)┛♪\n"
+	@sleep 0.5
+	@printf "\033c"
+	@echo "\n\033[1;33m♪┗(・o･)┓♪\n"
+	@sleep 0.5
+	@printf "\033c"
+	@echo "\n\033[36m♪┏(・o･)┛♪\n"
+	@sleep 0.5
+	@printf "\033c"
+	@echo "\n\033[34m♪┗(・o･)┓♪\n"
+	@clear
