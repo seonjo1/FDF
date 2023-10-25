@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 18:27:22 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/25 16:30:13 by seonjo           ###   ########.fr       */
+/*   Updated: 2023/10/20 17:11:52 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	enter_value(t_xyz *xyz, char *input, int j, int k)
 
 	xyz->x = j;
 	xyz->y = k;
-	xyz->z = ft_atoi(input);
+	xyz->z = ft_atoi(input) / 2;
 	i = 0;
 	while (input[i] != '\0' && input[i++] != 'x')
 		;
