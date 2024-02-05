@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:02:41 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/27 22:40:36 by seonjo           ###   ########.fr       */
+/*   Updated: 2024/02/05 21:05:52 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	draw_row(t_vars *vars, t_xyz *img_frame, double x_off, double y_off)
 	int		i;
 
 	w = vars->map.width;
-	if (img_frame[0].z < img_frame[vars->map.width - 1].z)
+	if (img_frame[0].z < img_frame[vars->map.size - 1].z)
 	{
 		i = 0;
 		while (i < vars->map.size)
@@ -63,7 +63,7 @@ void	draw_row(t_vars *vars, t_xyz *img_frame, double x_off, double y_off)
 	}
 	else
 	{
-		i = vars->map.width - 1;
+		i = vars->map.size - 1;
 		while (i >= 0)
 		{
 			if ((i + 1) % w != 0)
@@ -89,7 +89,7 @@ void	draw_col(t_vars *vars, t_xyz *img_frame, double x_off, double y_off)
 	t_xyz	xy;
 	int		w;
 
-	if (img_frame[0].z < img_frame[vars->map.width - 1].z)
+	if (img_frame[0].z < img_frame[vars->map.size - 1].z)
 	{
 		xy.x = 0;
 		w = vars->map.width;
@@ -111,9 +111,9 @@ void	draw_col(t_vars *vars, t_xyz *img_frame, double x_off, double y_off)
 			xy.x++;
 		}
 	}
-	else 
+	else
 	{
-		xy.x = vars->map.width - 1;
+		xy.x = vars->map.size - 1;
 		w = vars->map.width;
 		while (xy.x >= 0)
 		{

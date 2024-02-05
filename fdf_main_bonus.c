@@ -6,7 +6,7 @@
 /*   By: seonjo <seonjo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:05:01 by seonjo            #+#    #+#             */
-/*   Updated: 2023/09/25 16:30:08 by seonjo           ###   ########.fr       */
+/*   Updated: 2024/01/23 20:52:57 by seonjo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 		exit(1);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &(vars.img.bpp), \
 					&(vars.img.line_len), &(vars.img.endian));
-	set_angle(&(vars.map), 50, 0, 45);
+	set_angle(&(vars.map), 30, 30, 0);
 	draw_img(&vars, 1);
 	draw_img(&vars, 0);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
