@@ -39,7 +39,7 @@
 - 확장자는 반드시 .fdf
 - z 값 뒤에 color가 존재하면 색 적용
 
-## Rendering 결과
+## 렌더링 결과
 ### test_maps/julia.fdf 맵 파일을 Rendering 한 결과
 
 **isometric projection**
